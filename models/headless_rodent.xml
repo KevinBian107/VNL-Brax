@@ -525,8 +525,6 @@
     <general name="knee_R" forcerange="-0.2 0.2" joint="knee_R" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.5515240436302081" biasprm="0.06283185307179587 -0.4"/>
     <general name="ankle_R" forcerange="-0.2 0.2" joint="ankle_R" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.307177948351002" biasprm="0.2513274122871835 -0.4"/>
     <general name="toe_R" forcerange="-0.025 0.025" joint="toe_R" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.02181661564992912" biasprm="0.02181661564992912 -0.05"/>
-    <!-- <general name="atlas" forcerange="-0.025 0.025" joint="atlas" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.02181661564992912" biasprm="0.0174532925199433 -0.05"/>
-    <general name="mandible" forcerange="-0.025 0.025" joint="mandible" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.01396263401595464" biasprm="-0.000872664625997166 -0.05"/>
     <general name="scapula_L_supinate" forcerange="-0.25 0.25" joint="scapula_L_supinate" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.04799655442984406" biasprm="0.03926990816987241 -0.5"/>
     <general name="scapula_L_abduct" forcerange="-0.25 0.25" joint="scapula_L_abduct" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.1308996938995747" biasprm="0 -0.5"/>
     <general name="scapula_L_extend" forcerange="-0.25 0.25" joint="scapula_L_extend" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.0174532925199433" biasprm="0 -0.5"/>
@@ -542,7 +540,7 @@
     <general name="shoulder_sup_R" forcerange="-0.15 0.15" joint="shoulder_sup_R" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.1780235837034216" biasprm="0.1623156204354726 -0.3"/>
     <general name="elbow_R" forcerange="-0.15 0.15" joint="elbow_R" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.3010692959690218" biasprm="-0.0916297857297023 -0.3"/>
     <general name="wrist_R" forcerange="-0.05 0.05" joint="wrist_R" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.1221730476396031" biasprm="0.08726646259971647 -0.1"/>
-    <general name="finger_R" forcerange="-0.025 0.025" joint="finger_R" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.03926990816987241" biasprm="0.03926990816987241 -0.05"/> -->
+    <general name="finger_R" forcerange="-0.025 0.025" joint="finger_R" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.03926990816987241" biasprm="0.03926990816987241 -0.05"/>
   </actuator>
   <compiler meshdir="./"/>
 </mujoco>
