@@ -56,7 +56,7 @@ class Rodent(MjxEnv):
             ctrl_cost_weight=0.1,
             healthy_reward=0.5,
             terminate_when_unhealthy=True,
-            healthy_z_range=(0.005, 0.12),
+            healthy_z_range=(0.05, 0.12),
             reset_noise_scale=1e-2,
             exclude_current_positions_from_observation=True,
             **kwargs,
@@ -150,7 +150,6 @@ class Rodent(MjxEnv):
             pipeline_state=data, obs=obs, reward=reward, done=done
         )
 
-    # this get observation might be faulty?
     def _get_obs(
             self, data: mjx.Data, action: jp.ndarray
     ) -> jp.ndarray:
@@ -188,11 +187,11 @@ config = {
     "env_name": env_name,
     "algo_name": "ppo",
     "task_name": "run",
-    "num_envs": 512,
+    "num_envs": 8,
     "num_timesteps": 1_000_000,
     "eval_every": 1_000,
     "episode_length": 500,
-    "batch_size": 256,
+    "batch_size": 8,
     "learning_rate": 6e-4,
     "terminate_when_unhealthy": True,
     "run_platform": "local",
