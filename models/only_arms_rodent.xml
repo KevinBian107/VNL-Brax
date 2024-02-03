@@ -1,0 +1,204 @@
+<mujoco model="rat">
+  <compiler angle="radian"/>
+  <size njmax="8000" nconmax="4000"/>
+  <default>
+    <motor ctrlrange="-1 1" ctrllimited="true"/>
+    <joint limited="true" armature="6e-07" damping="0.001"/>
+    <geom friction="0.7 0.005 0.0001" solref="0.015 1" solimp=".9 .99 .003"/>
+    <site group="3" rgba="0 0 1 1"/>
+    <general ctrllimited="true" ctrlrange="-1 1" forcelimited="false" gainprm="0.01"/>
+    <default class="bone">
+      <geom contype="0" conaffinity="0" group="0" rgba="0.5 0.5 0.5 1" density="1100.0"/>
+    </default>
+    <default class="collision">
+      <geom contype="1" conaffinity="1" condim="3" group="2"/>
+      <default class="collision_primitive">
+        <geom type="capsule" group="2" rgba="0 0.5 0.5 1" density="500.0"/>
+        <default class="collision_primitive_paw">
+          <geom condim="3" priority="1" rgba="0 0.6 0.7 1" friction="1.5 0.005 0.0001"/>
+        </default>
+        <default class="nonself_collision_primitive">
+          <geom conaffinity="0"/>
+        </default>
+      </default>
+    </default>
+    <default class="lumbar">
+      <joint group="3" pos="0.003 0 -0.003" armature="1e-05" damping="0.03" solimplimit="0 .99 .01"/>
+      <general gainprm="0.15"/>
+      <default class="lumbar_extend">
+        <joint stiffness="0.02" range="-0.5235987755982988 0.7853981633974483"/>
+        <general gainprm="0.4"/>
+      </default>
+      <default class="lumbar_bend">
+        <joint stiffness="0.03" range="-0.5235987755982988 0.5235987755982988"/>
+      </default>
+      <default class="lumbar_twist">
+        <joint stiffness="0.03" range="-0.5235987755982988 0.5235987755982988"/>
+      </default>
+    </default>
+    <default class="cervical">
+      <joint group="3" pos="-0.02 0 -0.05" stiffness="1.0" armature="0.001" damping="1.0" solimplimit="0 .99 .01"/>
+      <default class="cervical_extend">
+        <joint range="-0.4072434921320102 0.6108652381980153"/>
+        <general gainprm="2.5"/>
+      </default>
+      <default class="cervical_bend">
+        <joint range="-0.6108652381980153 0.6108652381980153"/>
+        <general gainprm="2.5"/>
+      </default>
+      <default class="cervical_twist">
+        <joint range="-0.6108652381980153 0.6108652381980153"/>
+        <general gainprm="2.5"/>
+      </default>
+    </default>
+    <default class="atlas">
+      <joint axis="0 -1 0" stiffness="0.002" range="-0.08726646259971647 0.7853981633974483" damping="0.002" solimplimit="0 .99 .01"/>
+      <general gainprm="0.025"/>
+    </default>
+    <default class="mandible">
+      <joint stiffness="0.002" range="-0.296705972839036 0.2617993877991494" springref="-0.314159265359" damping="0.002" solimplimit="0 .99 .01"/>
+      <general gainprm="0.025"/>
+    </default>
+    <default class="caudal">
+      <joint group="3" stiffness="1e-05" damping="0.002" solimplimit="0 .99 .01"/>
+      <general gainprm="0.005"/>
+      <default class="caudal_extend">
+        <joint range="-0.08726646259971647 0.08726646259971647"/>
+      </default>
+      <default class="caudal_bend">
+        <joint range="-0.08726646259971647 0.08726646259971647"/>
+      </default>
+    </default>
+    <default class="hip">
+      <joint armature="1e-05" damping="0.02" solimplimit="0 .99 .01"/>
+      <general gainprm="0.2"/>
+      <default class="hip_supinate">
+        <joint range="-0.6981317007977318 0.5235987755982988"/>
+      </default>
+      <default class="hip_abduct">
+        <joint range="-0.5235987755982988 1.047197551196598"/>
+      </default>
+      <default class="hip_extend">
+        <joint range="-1.570796326794897 1.047197551196598"/>
+        <general gainprm="0.3"/>
+      </default>
+    </default>
+    <default class="knee">
+      <joint range="-1.221730476396031 1.53588974175501" damping="0.005" solimplimit="0 .99 .01"/>
+      <general gainprm="0.2"/>
+    </default>
+    <default class="ankle">
+      <joint range="-0.1396263401595464 1.396263401595464" damping="0.003" solimplimit="0 .99 .01"/>
+      <general gainprm="0.2"/>
+    </default>
+    <default class="toe">
+      <joint range="0 0.8726646259971648" damping="0.001" solimplimit="0 .99 .01"/>
+      <general gainprm="0.025"/>
+    </default>
+    <default class="scapula">
+      <joint damping="0.005" solimplimit="0 .99 .01"/>
+      <general gainprm="0.25"/>
+      <default class="scapula_supinate">
+        <joint pos="0 0.005000000000000001 0" range="-0.0174532925199433 0.1745329251994329"/>
+      </default>
+      <default class="scapula_abduct">
+        <joint pos="0 0.005000000000000001 -0.01" range="-0.2617993877991494 0.2617993877991494"/>
+      </default>
+      <default class="scapula_extend">
+        <joint pos="0 0 0" range="-0.03490658503988659 0.03490658503988659"/>
+        <general gainprm="0.25"/>
+      </default>
+    </default>
+    <default class="shoulder">
+      <joint range="-1.308996938995747 0.8726646259971648" damping="0.005" solimplimit="0 .99 .01"/>
+      <general gainprm="0.15"/>
+    </default>
+    <default class="shoulder_sup">
+      <joint range="-0.05235987755982989 1.134464013796314" damping="0.005" solimplimit="0 .99 .01"/>
+      <general gainprm="0.15"/>
+    </default>
+    <default class="elbow">
+      <joint range="-1.308996938995747 0.6981317007977318" damping="0.003" solimplimit="0 .99 .01"/>
+      <general gainprm="0.15"/>
+    </default>
+    <default class="wrist">
+      <joint range="-0.3490658503988659 2.094395102393195" damping="0.002" solimplimit="0 .99 .01"/>
+      <general gainprm="0.05"/>
+    </default>
+    <default class="finger">
+      <joint range="0 1.570796326794897" damping="0.002" solimplimit="0 .99 .01"/>
+      <general gainprm="0.025"/>
+    </default>
+    <default class="sensor">
+      <site group="4"/>
+    </default>
+    <default class="tracking_site">
+      <site type="sphere" size="0.027" rgba="1 0 0 1" group="3"/>
+    </default>
+  </default>
+  <visual>
+    <quality shadowsize="2048"/>
+  </visual>
+  <statistic meansize="0.003"/>
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1=".3 .5 .7" rgb2="0 0 0" width="32" height="512"/>
+    <texture name="body" type="cube" builtin="flat" mark="cross" width="128" height="128" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" random="0.01"/>
+    <material name="body" texture="body" texuniform="true" rgba="0.8 0.6 .4 1"/>
+    <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+    <material name="grid" texture="grid" texrepeat="1 1" texuniform="true" reflectance=".2"/>
+  </asset>
+  <worldbody>
+    <geom name="floor" size="0 0 .1" type="plane" material="grid" condim="3"/>
+    <body name="torso" pos="0.03099526054578288 2.058524937651458e-07 0.1008957263119967">
+      <freejoint name="root"/>
+      <site name="tracking[torso]" class="tracking_site" />
+      <light name="tracking_light" mode="trackcom" pos="0 0 3"/>
+      <camera name="back" mode="trackcom" pos="-1 0 0.5" xyaxes="0 -1 0 1 0 2"/>
+      <camera name="side" mode="trackcom" pos="0 -1 0.5" xyaxes="1 0 0 0 1 2"/>
+      <camera name="side_alt" mode="trackcom" pos="0.5 -0.561 0.199" xyaxes="0.766 0.643 0.000 -0.162 0.192 0.968"/>
+      <camera name="top" mode="trackcom" fovy="100.0" pos="0 0 1" zaxis="0 -0.2 1"/>
+      <geom name="collision_torso" type="sphere" size="0.035" density="468.251260009" pos="-0.008200000000000001 0 0" euler="0 0.1745329251994329 0"/>
+      <body name="scapula_L" pos="0.00656 0.00164 0.01148">
+        <site name="tracking[scapula_L]" class="tracking_site" />
+        <joint name="scapula_L_supinate" class="scapula_supinate" pos="0 -0.005000000000000001 0" axis="-0 -0 1"/>
+        <joint name="scapula_L_abduct" class="scapula_abduct" pos="0 -0.005000000000000001 -0.01" axis="1 -0 -0"/>
+        <joint name="scapula_L_extend" class="scapula_extend" pos="0 0 0" axis="0.3 1 0"/>
+        <site name="shoulder_L" size="0.002" pos="0.0287 0.00984 -0.02542"/>
+        <body name="upper_arm_L" pos="0.0287 0.00984 -0.02542">
+          <site name="tracking[upper_arm_L]" class="tracking_site" />
+          <joint name="shoulder_L" class="shoulder" axis="0 1 0"/>
+          <joint name="shoulder_sup_L" class="shoulder_sup" axis="0 0 -1"/>
+          <site name="elbow_L" type="cylinder" size="0.0006000000000000001 0.004" pos="-0.01593120836133218 0.01035528543486592 -0.02230369170586505" zaxis="0 1 0.2"/>
+          <geom name="humerus_L_collision" size="0.007771321151869356 0.01554264230373871" pos="-0.007743344450064287 0.005787978890072665 -0.01198335273722202" quat="0.472560999180163 0.3450082805420177 0.0007016050154913519 0.8109592444517103"/>
+        </body>
+        <geom name="scapula_L_collision" type="sphere" size="0.005005370825529099 0.01463182792067528 0.02431104406714439" density="513.564612303" pos="0.01757062251063465 0.008636916680112587 -0.01522952249267691" quat="0.1844194062696375 0.7692222855376651 0.4740322845517004 0.3867556738123709"/>
+      </body>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude name="upper_arm_L:torso" body1="upper_arm_L" body2="torso"/>
+
+    <pair geom1="collision_torso" geom2="floor"/>
+
+  </contact>
+
+  <actuator>
+    <general name="scapula_L_supinate" forcerange="-0.25 0.25" joint="scapula_L_supinate" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.04799655442984406" biasprm="0.03926990816987241 -0.5"/>
+    <general name="scapula_L_abduct" forcerange="-0.25 0.25" joint="scapula_L_abduct" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.1308996938995747" biasprm="0 -0.5"/>
+    <general name="scapula_L_extend" forcerange="-0.25 0.25" joint="scapula_L_extend" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.0174532925199433" biasprm="0 -0.5"/>
+    <general name="shoulder_L" forcerange="-0.15 0.15" joint="shoulder_L" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.3272492347489368" biasprm="-0.06544984694978737 -0.3"/>
+    <general name="shoulder_sup_L" forcerange="-0.15 0.15" joint="shoulder_sup_L" dyntype="filter" biastype="affine" dynprm="0.04" gainprm="0.1780235837034216" biasprm="0.1623156204354726 -0.3"/>
+  </actuator>
+  <!-- <sensor>
+    <accelerometer name="accelerometer" site="head"/>
+    <velocimeter name="velocimeter" site="head"/>
+    <gyro name="gyro" site="head"/>
+    <touch name="palm_L" site="palm_L"/>
+    <touch name="palm_R" site="palm_R"/>
+    <touch name="sole_L" site="sole_L"/>
+    <touch name="sole_R" site="sole_R"/>
+    <subtreelinvel name="torso" body="torso"/>
+  </sensor> -->
+  <compiler meshdir="./"/>
+</mujoco>

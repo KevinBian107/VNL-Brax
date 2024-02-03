@@ -189,14 +189,13 @@ config = {
     "algo_name": "ppo",
     "task_name": "headless_run",
     "num_envs": 8,
-    "num_timesteps": 10_000,
+    "num_timesteps": 1000,
     "eval_every": 100,
     "episode_length": 500,
-    "num_evals": 1000,
     "batch_size": 4,
     "learning_rate": 9e-4,
     "terminate_when_unhealthy": False,
-    "run_platform": "local_home",
+    "run_platform": "local_salk",
 }
 
 

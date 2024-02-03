@@ -55,13 +55,13 @@ class Rodent(MjxEnv):
             forward_reward_weight=5,
             ctrl_cost_weight=0.1,
             healthy_reward=0.5,
-            terminate_when_unhealthy=False,
-            healthy_z_range=(0.2, 1.0),
+            terminate_when_unhealthy=True,
+            healthy_z_range=(0.005, 0.12),
             reset_noise_scale=1e-2,
-            exclude_current_positions_from_observation=False,
+            exclude_current_positions_from_observation=True,
             **kwargs,
     ):
-        mj_model = mujoco.MjModel.from_xml_path("./models/simple_rodent.xml")
+        mj_model = mujoco.MjModel.from_xml_path("./models/rodent.xml")
         mj_model.opt.solver = mujoco.mjtSolver.mjSOL_CG
         mj_model.opt.iterations = 6
         mj_model.opt.ls_iterations = 6
@@ -146,7 +146,6 @@ class Rodent(MjxEnv):
             x_velocity=velocity[0],
             y_velocity=velocity[1],
         )
-        print(state.metrics)
         return state.replace(
             pipeline_state=data, obs=obs, reward=reward, done=done
         )
@@ -189,14 +188,13 @@ config = {
     "env_name": env_name,
     "algo_name": "ppo",
     "task_name": "run",
-    "num_envs": 8,
-    "num_timesteps": 1_000,
-    "eval_every": 100,
+    "num_envs": 512,
+    "num_timesteps": 1_000_000,
+    "eval_every": 1_000,
     "episode_length": 500,
-    "num_evals": 1000,
-    "batch_size": 4,
+    "batch_size": 256,
     "learning_rate": 6e-4,
-    "terminate_when_unhealthy": False,
+    "terminate_when_unhealthy": True,
     "run_platform": "local",
 }
 
@@ -226,11 +224,7 @@ def wandb_progress(num_steps, metrics):
     
 def policy_params_fn(num_steps, make_policy, params, model_path = './model_checkpoints'):
     os.makedirs(model_path, exist_ok=True)
-    model.save_params(f"{model_path}/{num_steps}", params)
+    model.save_params(f"{model_path}/{num_steps}_only_arms", params)
     
 
 make_inference_fn, params, _ = train_fn(environment=env, progress_fn=wandb_progress, policy_params_fn=policy_params_fn)
-
-
-model_path = './model_checkpoints/brax_ppo_rodent_run_finished'
-model.save_params(model_path, params)
